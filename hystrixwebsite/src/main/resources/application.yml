@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: hystrix-website
+server:
+  port: 8888

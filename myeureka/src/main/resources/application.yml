@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka-server1
+server:
+  port: 8761
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: true
+    peer-eureka-nodes-update-interval-ms: 100000
+  instance:
+    hostname: eureka1

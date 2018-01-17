@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: sms-server-1
+server:
+  port: 9001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    lease-renewal-interval-in-seconds: 30
+
+

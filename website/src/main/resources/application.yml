@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: website-server
+server:
+  port: 8080
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+    hostname: website-server
+#不适用熔断机制
+feign:
+  hystrix:
+    enabled: false
+ribbon:
+  eureka:
+    enabled: true
+  hystrix:
+    enabled: false
+  #默认连接超时时间
+  ConnectTimeOut:  2000
+  #全局默认读超时时间
+  ReadTimeOut: 2000
+  #是否开启重试机制
+  OkToRetryOnAllOperations: true
+#最大重试次数
+  MaxAutoRetriesNextServer: 0
+#当前实例重试次数
+  MaxAutoRetries: 0
+
+
+service-by-properties:
+#服务列表
+  listOfServers: http://www.12306.cn/mormhweb/,www.csdn.net,https://dev.aliyun.com
+  #重试次数对于当前的负载均衡策略
+  MaxAutoRetriesNextServer: 0
+  #当前实例重试次数
+  MaxAutoRetries: 0
+  ribbon:
+  #负载均衡策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+  #设置当前ribbon的实例列表从配置文件中读取不从eureka中获取
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
